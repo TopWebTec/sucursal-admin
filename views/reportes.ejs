@@ -1,0 +1,147 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title><%= titulo %></title>
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+    <main class="contenedor reportes">
+        <header class="encabezado-reportes">
+            <div>
+                <p class="etiqueta">SUCURSAL ADMINISTRATIVA</p>
+                <h1><%= titulo %></h1>
+                <p>Consulta y seguimiento de operaciones bancarias.</p>
+            </div>
+            <a class="enlace-secundario" href="/cuentas">
+                Apertura de cuentas
+            </a>
+        </header>
+
+        <section class="panel">
+            <h2>Filtrar operaciones</h2>
+
+            <form method="GET" action="/reportes" class="filtros">
+                <div>
+                    <label for="fechaInicio">Fecha inicial</label>
+                    <input
+                        id="fechaInicio"
+                        type="date"
+                        name="fechaInicio"
+                        value="<%= filtros.fechaInicio %>"
+                    >
+                </div>
+
+                <div>
+                    <label for="fechaFin">Fecha final</label>
+                    <input
+                        id="fechaFin"
+                        type="date"
+                        name="fechaFin"
+                        value="<%= filtros.fechaFin %>"
+                    >
+                </div>
+
+                <div>
+                    <label for="tipo">Tipo de operación</label>
+                    <select id="tipo" name="tipo">
+                        <option value=""
+                            <%= filtros.tipo === '' ? 'selected' : '' %>>
+                            Todos los tipos
+                        </option>
+                        <option value="deposito"
+                            <%= filtros.tipo === 'deposito' ? 'selected' : '' %>>
+                            Depósitos
+                        </option>
+                        <option value="retiro"
+                            <%= filtros.tipo === 'retiro' ? 'selected' : '' %>>
+                            Retiros
+                        </option>
+                        <option value="transferencia"
+                            <%= filtros.tipo === 'transferencia' ? 'selected' : '' %>>
+                            Transferencias
+                        </option>
+                    </select>
+                </div>
+
+                <button type="submit">Aplicar filtros</button>
+            </form>
+        </section>
+
+        <section class="resumen">
+            <article class="tarjeta-resumen">
+                <span>Operaciones encontradas</span>
+                <strong><%= transacciones.length %></strong>
+            </article>
+
+            <article class="tarjeta-resumen">
+                <span>Importe total</span>
+                <strong>—</strong>
+                <small>Pendiente de conexión</small>
+            </article>
+
+            <article class="tarjeta-resumen">
+                <span>Estado de consulta</span>
+                <strong>Pendiente</strong>
+                <small>API central no conectada</small>
+            </article>
+        </section>
+
+        <% if (error) { %>
+            <div class="aviso aviso-error" role="alert">
+                <%= error %>
+            </div>
+        <% } %>
+
+        <% if (pendiente) { %>
+            <div class="aviso" role="status">
+                <strong>Consulta central pendiente</strong>
+                <p>
+                    Los filtros están preparados, pero todavía no se han
+                    consultado transacciones reales. La información se
+                    conectará cuando esté disponible la API del Banco Central.
+                </p>
+            </div>
+        <% } %>
+
+        <section class="panel">
+            <h2>Historial de transacciones</h2>
+
+            <div class="tabla-contenedor">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Fecha</th>
+                            <th>Tipo</th>
+                            <th>Cuenta origen</th>
+                            <th>Cuenta destino</th>
+                            <th>Importe</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% if (transacciones.length === 0) { %>
+                            <tr>
+                                <td colspan="5" class="sin-resultados">
+                                    No hay datos disponibles para mostrar.
+                                </td>
+                            </tr>
+                        <% } else { %>
+                            <% transacciones.forEach((t) => { %>
+                                <tr>
+                                    <td><%= t.created_at %></td>
+                                    <td><%= t.type %></td>
+                                    <td><%= t.source_account_id ?? '—' %></td>
+                                    <td><%= t.destination_account_id ?? '—' %></td>
+                                    <td><%= t.amount %></td>
+                                </tr>
+                            <% }) %>
+                        <% } %>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+    </main>
+</body>
+</html>

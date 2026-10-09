@@ -1,0 +1,209 @@
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #f1f5f9;
+    color: #172033;
+}
+
+.contenedor {
+    max-width: 650px;
+    margin: 50px auto;
+    padding: 30px;
+    background: white;
+    border-radius: 14px;
+    box-shadow: 0 5px 20px #00000012;
+}
+
+h1 {
+    color: #164e63;
+}
+
+label {
+    display: block;
+    margin-top: 18px;
+    margin-bottom: 7px;
+    font-weight: bold;
+}
+
+input {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #cbd5e1;
+    border-radius: 7px;
+}
+
+button {
+    margin-top: 22px;
+    padding: 12px 18px;
+    border: 0;
+    border-radius: 7px;
+    background: #0f766e;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+nav {
+    margin-top: 25px;
+}
+
+.exito {
+    color: #166534;
+}
+
+.error {
+    color: #b91c1c;
+}
+
+
+
+.encabezado-reportes {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 18px;
+    margin-bottom: 28px;
+}
+
+.encabezado-reportes h1 {
+    margin: 8px 0;
+}
+
+.etiqueta {
+    color: #0f766e;
+    font-size: 12px;
+    font-weight: bold;
+    letter-spacing: 1.5px;
+}
+
+.panel {
+    margin-top: 22px;
+    padding: 22px;
+    background: #fff;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+}
+
+.panel h2 {
+    margin-top: 0;
+    font-size: 19px;
+}
+
+.filtros {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 16px;
+    align-items: end;
+}
+
+.filtros select {
+    width: 100%;
+    padding: 12px;
+    background: white;
+    border: 1px solid #cbd5e1;
+    border-radius: 7px;
+}
+
+.filtros button {
+    margin-top: 0;
+}
+
+.resumen {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+    gap: 16px;
+    margin-top: 22px;
+}
+
+.tarjeta-resumen {
+    padding: 20px;
+    background: #fff;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+}
+
+.tarjeta-resumen span,
+.tarjeta-resumen small {
+    display: block;
+    color: #64748b;
+}
+
+.tarjeta-resumen strong {
+    display: block;
+    margin: 12px 0 6px;
+    font-size: 23px;
+}
+
+.aviso {
+    margin-top: 22px;
+    padding: 18px;
+    background: #ecfeff;
+    border: 1px solid #a5f3fc;
+    border-radius: 10px;
+    color: #155e75;
+}
+
+.aviso-error {
+    background: #fef2f2;
+    border-color: #fecaca;
+    color: #991b1b;
+}
+
+.tabla-contenedor {
+    width: 100%;
+    overflow-x: auto;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+}
+
+th,
+td {
+    padding: 13px 10px;
+    border-bottom: 1px solid #e2e8f0;
+    white-space: nowrap;
+}
+
+th {
+    background: #f8fafc;
+    color: #334155;
+}
+
+.sin-resultados {
+    padding: 28px;
+    text-align: center;
+    color: #64748b;
+}
+
+.enlace-secundario {
+    color: #0f766e;
+    font-weight: bold;
+}
+
+
+.mensaje-exito {
+    margin: 16px 0;
+    padding: 14px;
+    color: #075e43;
+    background: #e8f7ef;
+    border: 1px solid #a7dfc1;
+    border-radius: 8px;
+}
+
+.mensaje-error {
+    margin: 16px 0;
+    padding: 14px;
+    color: #a32121;
+    background: #fff0f0;
+    border: 1px solid #f0b7b7;
+    border-radius: 8px;
+}

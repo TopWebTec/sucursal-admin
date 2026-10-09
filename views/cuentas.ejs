@@ -1,0 +1,83 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title><%= titulo %></title>
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+    <main class="contenedor">
+        <h1><%= titulo %></h1>
+        <p>Servidor administrativo de sucursal bancaria</p>
+        <%if(mensaje){%>
+            <div class="mensaje-exito" role="status">
+                <strong><%= mensaje %></strong>
+
+                <% if (resultado && resultado.account_number) { %>
+                    <p>
+                        Número de cuenta:
+                        <strong><%= resultado.account_number %></strong>
+                    </p>
+                <% } %>
+
+                <% if (resultado && resultado.account_id) { %>
+                    <p>
+                        Identificador:
+                        <%= resultado.account_id %>
+                    </p>
+                <% } %>
+
+                <% if (resultado && resultado.balance !== undefined &&
+                    resultado.balance !== null) { %>
+                    <p>
+                        Saldo registrado:
+                        $<%= Number(resultado.balance).toLocaleString('es-MX', {
+                            minimumFractionDigits: 2,
+                            maximumFractionDigits: 2
+                        }) %> MXN
+                    </p>
+                <% } %>
+            </div>
+        <% } %>
+
+        <% if (error) { %>
+            <div class="mensaje-error" role="alert">
+                <%= error %>
+            </div>
+        <% } %>
+
+
+        <form method="POST" action="/cuentas">
+            <label for="owner_name">Nombre del titular</label>
+            <input
+                id="owner_name"
+                name="owner_name"
+                type="text"
+                maxlength="150"
+                required
+                value="<%= datos.owner_name %>"
+            >
+
+            <label for="initial_balance">Saldo inicial (MXN)</label>
+            <input
+                id="initial_balance"
+                name="initial_balance"
+                type="number"
+                min="1000"
+                max="1000"
+                step="0.01"
+                required
+                value="<%= datos.initial_balance %>"
+            >
+
+            <button type="submit">Solicitar apertura</button>
+        </form>
+
+        <nav>
+            <a href="/reportes">Consultar reportes</a>
+        </nav>
+    </main>
+</body>
+</html>
