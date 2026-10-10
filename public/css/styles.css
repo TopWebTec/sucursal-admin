@@ -207,3 +207,65 @@ th {
     border: 1px solid #f0b7b7;
     border-radius: 8px;
 }
+
+
+/* Ajustar el ancho de la página de reportes */
+.contenedor.reportes {
+    width: calc(100% - 40px);
+    max-width: 1500px;
+    margin: 20px auto;
+    box-sizing: border-box;
+}
+
+/* Evitar el desplazamiento horizontal de la tabla */
+.tabla-contenedor {
+    width: 100%;
+    overflow-x: hidden;
+}
+
+/* Hacer que la tabla aproveche todo el espacio */
+.tabla-contenedor table {
+    width: 100%;
+    table-layout: fixed;
+    border-collapse: collapse;
+}
+
+/* Permitir que el contenido se ajuste dentro de las celdas */
+.tabla-contenedor th,
+.tabla-contenedor td {
+    padding: 12px 10px;
+    overflow-wrap: anywhere;
+    word-break: break-word;
+    font-size: 14px;
+}
+
+/* Distribuir el espacio entre las cinco columnas */
+.tabla-contenedor th:nth-child(1),
+.tabla-contenedor td:nth-child(1) {
+    width: 22%;
+}
+
+.tabla-contenedor th:nth-child(2),
+.tabla-contenedor td:nth-child(2) {
+    width: 15%;
+}
+
+.tabla-contenedor th:nth-child(3),
+.tabla-contenedor td:nth-child(3) {
+    width: 15%;
+}
+
+.tabla-contenedor th:nth-child(4),
+.tabla-contenedor td:nth-child(4) {
+    width: 15%;
+}
+
+.tabla-contenedor th:nth-child(5),
+.tabla-contenedor td:nth-child(5) {
+    width: 15%;
+}
+.tabla-contenedor th:nth-child(6),
+.tabla-contenedor td:nth-child(6) {
+    width: 18%;
+}
+

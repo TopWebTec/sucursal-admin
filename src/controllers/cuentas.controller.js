@@ -85,6 +85,7 @@ exports.solicitarApertura = async (req, res) => {
         });
 
     } catch (error) {
+        console.error(error.response?.data || error.message);
         // 6. Manejar errores sin exponer credenciales ni detalles internos.
         const status = error.response?.status;
 
